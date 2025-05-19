@@ -1,5 +1,6 @@
 
 import { Linkedin, Twitter, Mail } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Team = () => {
   return (
@@ -24,10 +25,12 @@ const Team = () => {
             email="ntalemesarch812@gmail.com"
           />
           <TeamMember 
-            image="/lovable-uploads/8080c31e-52e3-449d-8c61-4e80d32cc7a3.png"
-            name="Team Member 2"
-            role="Role to be updated"
-            bio="Information about the second team member will be updated soon."
+            image="/lovable-uploads/a4d1acf8-677d-4c8b-a5f5-cfdaca32aa56.png"
+            name="Muhoozi Owen"
+            role="CTO (IT Support Officer)"
+            bio="Detail-oriented IT professional with teaching, data management, research, and cybersecurity expertise. Proficient in database development, Microsoft Office applications, and data quality assurance. Skilled in guiding people through innovation, research methodologies, and project development. Strong problem-solving abilities, with a passion for leveraging technology to enhance learning and community development."
+            linkedin="https://ug.linkedin.com/in/muhoozi-owen-1041b5271"
+            email="muhooziowen85@gmail.com"
           />
         </div>
 
@@ -38,6 +41,38 @@ const Team = () => {
             <PartnerLogo name="Uganda Wildlife Authority" />
             <PartnerLogo name="National Forest Authority" />
             <PartnerLogo name="Environmental Research Institute" />
+          </div>
+        </div>
+        
+        <div className="mt-16 py-10">
+          <h3 className="text-2xl font-semibold mb-6 text-center text-forest-dark">Our Achievements</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="aspect-video relative overflow-hidden">
+                <img 
+                  src="/lovable-uploads/816e4a8a-02c0-4072-83bd-7b35facfc915.png" 
+                  alt="Award winners during Inter-University hackathon competition" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="text-lg font-medium text-forest-dark">Award Winners</h4>
+                <p className="text-gray-600 text-sm">Inter-University hackathon competition at Ministry of Water and Environment during Water and Environment Week 2023</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="aspect-video relative overflow-hidden">
+                <img 
+                  src="/lovable-uploads/874baa1b-2e14-44bc-b7f8-ee729d1dfd5d.png" 
+                  alt="Aquawood investor pitch presentation" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="text-lg font-medium text-forest-dark">Investor Pitch</h4>
+                <p className="text-gray-600 text-sm">Aquawood investor pitch at National Water and Sewage Corporation during Water and Environment Week 2024</p>
+              </div>
+            </div>
           </div>
         </div>
 
