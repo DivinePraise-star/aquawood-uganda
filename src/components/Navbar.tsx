@@ -14,8 +14,8 @@ const Navbar = () => {
     <nav className="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
       <div className="container-custom flex items-center justify-between py-4">
         <a href="#" className="flex items-center space-x-2">
-          <span className="text-xl font-display font-bold text-forest-dark">AQUAWOOD</span>
-          <span className="text-sm font-medium text-aqua-DEFAULT">UGANDA</span>
+          <span className="text-xl font-display font-bold text-forest-dark">Aquawood Group</span>
+          <span className="text-sm font-medium text-aqua-DEFAULT">UGANDA LTD</span>
         </a>
 
         {/* Desktop Navigation */}

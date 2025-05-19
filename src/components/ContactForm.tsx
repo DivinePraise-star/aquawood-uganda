@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Send, Check } from 'lucide-react';
+import { Send, Check, Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
   const [formState, setFormState] = useState({
@@ -144,9 +144,31 @@ const ContactForm = () => {
             <div className="bg-white rounded-xl shadow-md p-8 mb-8">
               <h3 className="text-xl font-semibold mb-6 text-forest-DEFAULT">Connect With Us</h3>
               <div className="space-y-4">
-                <ContactInfo label="Email" value="info@aquawood-uganda.org" />
-                <ContactInfo label="Phone" value="+256 788 123 456" />
-                <ContactInfo label="Address" value="Kampala, Uganda" />
+                <ContactInfo 
+                  label="Company" 
+                  value="Aquawood Group Uganda Ltd" 
+                  icon={<MapPin size={18} className="text-forest-DEFAULT" />}
+                />
+                <ContactInfo 
+                  label="Email" 
+                  value="aquawooduganda@gmail.com" 
+                  icon={<Mail size={18} className="text-forest-DEFAULT" />}
+                />
+                <ContactInfo 
+                  label="Phone" 
+                  value="+256 760 101469, +256 778 004967" 
+                  icon={<Phone size={18} className="text-forest-DEFAULT" />}
+                />
+                <ContactInfo 
+                  label="Address" 
+                  value="Plot No. 35, Nakasero, Kampala Uganda" 
+                  icon={<MapPin size={18} className="text-forest-DEFAULT" />}
+                />
+                <ContactInfo 
+                  label="Postal Address" 
+                  value="P.O.BOX 188147, Kampala GPO" 
+                  icon={<Mail size={18} className="text-forest-DEFAULT" />}
+                />
               </div>
               
               <h4 className="text-lg font-medium mt-8 mb-4 text-gray-800">Follow Us</h4>
@@ -184,12 +206,16 @@ const ContactForm = () => {
 interface ContactInfoProps {
   label: string;
   value: string;
+  icon?: React.ReactNode;
 }
 
-const ContactInfo = ({ label, value }: ContactInfoProps) => (
-  <div>
-    <span className="text-sm font-medium text-gray-500 block">{label}:</span>
-    <span className="text-gray-700">{value}</span>
+const ContactInfo = ({ label, value, icon }: ContactInfoProps) => (
+  <div className="flex items-start">
+    {icon && <div className="mt-0.5 mr-2">{icon}</div>}
+    <div>
+      <span className="text-sm font-medium text-gray-500 block">{label}:</span>
+      <span className="text-gray-700">{value}</span>
+    </div>
   </div>
 );
 

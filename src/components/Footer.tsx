@@ -23,8 +23,8 @@ const Footer = () => {
                 />
               </div>
               <div>
-                <h3 className="font-display font-bold text-xl">AQUAWOOD</h3>
-                <p className="text-aqua-DEFAULT text-sm">UGANDA</p>
+                <h3 className="font-display font-bold text-xl">Aquawood Group</h3>
+                <p className="text-aqua-DEFAULT text-sm">UGANDA LTD</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 pr-4">
@@ -63,7 +63,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} AQUAWOOD Uganda. All rights reserved.
+            &copy; {new Date().getFullYear()} Aquawood Group Uganda Ltd. All rights reserved.
           </p>
           <button 
             onClick={scrollToTop}
