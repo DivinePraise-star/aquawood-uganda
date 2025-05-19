@@ -13,30 +13,21 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           <TeamMember 
-            image="/lovable-uploads/dbf08593-e08d-4e6e-828e-c85e640bef61.png"
-            name="Edward Mukiibi"
-            role="Project Lead"
-            bio="Environmental policy expert with 8+ years of experience in conservation initiatives across East Africa."
-          />
-          <TeamMember 
-            image="/lovable-uploads/96455984-5e26-4c18-9861-769250ed522f.png"
-            name="James Kakooza"
-            role="Technical Director"
-            bio="Geospatial analyst specializing in satellite imagery processing and environmental monitoring systems."
-          />
-          <TeamMember 
-            image="/lovable-uploads/0b47a49b-d5a4-4abf-b320-365eeb047b1a.png"
-            name="Daniel Ssempala"
-            role="Data Scientist"
-            bio="AI and machine learning expert focused on environmental applications and predictive analytics."
+            image="/lovable-uploads/09951c87-fd73-4969-857c-5c8f3e06288b.png"
+            name="Senjiyunva Mesarch"
+            role="Director / Project Manager"
+            bio="Mesarch is a seasoned project manager and youth leader with a passion for environmental conservation and social impact. Bachelor's degree in Information Systems and Technology from Makerere University. With experience in managing community-based projects, Mesarch brings strategic leadership and community engagement expertise to our team."
+            linkedin="https://ug.linkedin.com/in/ntale-mesarch-748304234"
+            twitter="https://x.com/ntale_mesarch"
+            email="ntalemesarch812@gmail.com"
           />
           <TeamMember 
             image="/lovable-uploads/8080c31e-52e3-449d-8c61-4e80d32cc7a3.png"
-            name="Brenda Namugwanya"
-            role="Community Liaison"
-            bio="Specialist in community engagement with extensive experience in participatory environmental management."
+            name="Team Member 2"
+            role="Role to be updated"
+            bio="Information about the second team member will be updated soon."
           />
         </div>
 
@@ -69,9 +60,12 @@ interface TeamMemberProps {
   name: string;
   role: string;
   bio: string;
+  linkedin?: string;
+  twitter?: string;
+  email?: string;
 }
 
-const TeamMember = ({ image, name, role, bio }: TeamMemberProps) => (
+const TeamMember = ({ image, name, role, bio, linkedin, twitter, email }: TeamMemberProps) => (
   <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
     <div className="aspect-[3/4] relative overflow-hidden">
       <img 
@@ -85,9 +79,15 @@ const TeamMember = ({ image, name, role, bio }: TeamMemberProps) => (
       <p className="text-aqua-DEFAULT font-medium mb-2">{role}</p>
       <p className="text-gray-600 text-sm mb-4">{bio}</p>
       <div className="flex space-x-3">
-        <SocialLink icon={<Linkedin size={16} />} />
-        <SocialLink icon={<Twitter size={16} />} />
-        <SocialLink icon={<Mail size={16} />} />
+        {linkedin && (
+          <SocialLink icon={<Linkedin size={16} />} href={linkedin} ariaLabel="LinkedIn" />
+        )}
+        {twitter && (
+          <SocialLink icon={<Twitter size={16} />} href={twitter} ariaLabel="Twitter" />
+        )}
+        {email && (
+          <SocialLink icon={<Mail size={16} />} href={`mailto:${email}`} ariaLabel="Email" />
+        )}
       </div>
     </div>
   </div>
@@ -95,10 +95,18 @@ const TeamMember = ({ image, name, role, bio }: TeamMemberProps) => (
 
 interface SocialLinkProps {
   icon: React.ReactNode;
+  href?: string;
+  ariaLabel: string;
 }
 
-const SocialLink = ({ icon }: SocialLinkProps) => (
-  <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-forest-light hover:text-forest-dark transition-colors">
+const SocialLink = ({ icon, href = "#", ariaLabel }: SocialLinkProps) => (
+  <a 
+    href={href} 
+    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-forest-light hover:text-forest-dark transition-colors"
+    aria-label={ariaLabel}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     {icon}
   </a>
 );
