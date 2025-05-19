@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,23 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom AQUAWOOD colors
+				aqua: {
+					DEFAULT: '#0EA5E9', // Water blue
+					dark: '#1A1F2C',    // Dark blue
+				},
+				forest: {
+					DEFAULT: '#4CAF50', // Medium green
+					dark: '#2E7D32',    // Dark green
+					light: '#A5D6A7',   // Light green
+				},
+				earth: {
+					DEFAULT: '#D2B48C', // Tan
+					gray: '#8E9196',    // Neutral gray
+					light: '#F5F5DC',   // Light beige
+				},
+				highlight: '#FEF7CD',   // Soft yellow
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +101,26 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(10px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'slide-up': 'slide-up 0.5s ease-out',
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				display: ['Montserrat', 'sans-serif'],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
