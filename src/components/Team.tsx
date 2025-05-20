@@ -1,3 +1,4 @@
+
 import { Linkedin, Twitter, Mail, Youtube } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -13,7 +14,7 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <TeamMember 
             image="/lovable-uploads/09951c87-fd73-4969-857c-5c8f3e06288b.png"
             name="Senjiyunva Mesarch"
@@ -30,6 +31,13 @@ const Team = () => {
             bio="Detail-oriented IT professional with teaching, data management, research, and cybersecurity expertise. Proficient in database development, Microsoft Office applications, and data quality assurance. Skilled in guiding people through innovation, research methodologies, and project development. Strong problem-solving abilities, with a passion for leveraging technology to enhance learning and community development."
             linkedin="https://ug.linkedin.com/in/muhoozi-owen-1041b5271"
             email="muhooziowen85@gmail.com"
+          />
+          <TeamMember 
+            image="/lovable-uploads/73f50752-a714-4afd-93b8-e60caa356939.png"
+            name="Muhumuza Marvin"
+            role="CMO & Database Manager"
+            bio="Muhumuza is a creative marketing professional with a Bachelor's degree in Library and Information Science from Makerere University. With over 3 years of experience in developing marketing campaigns and strategies, Muhumuza brings innovative marketing ideas and expertise to our team."
+            linkedin="https://www.linkedin.com/in/marvin-m-308b422a2"
           />
         </div>
 
