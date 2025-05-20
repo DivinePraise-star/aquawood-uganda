@@ -1,5 +1,4 @@
-
-import { Linkedin, Twitter, Mail } from 'lucide-react';
+import { Linkedin, Twitter, Mail, Youtube } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Team = () => {
@@ -34,7 +33,62 @@ const Team = () => {
           />
         </div>
 
-        <div className="bg-forest-light/20 rounded-xl p-8">
+        <div className="mb-16">
+          <h3 className="text-2xl font-semibold mb-6 text-center text-forest-dark">About Aquawood</h3>
+          <div className="bg-forest-light/10 rounded-xl p-8">
+            <div className="mb-6">
+              <h4 className="text-xl font-medium mb-3 text-forest-dark">Our Mission</h4>
+              <p className="text-gray-700">
+                Aquawood Group Uganda Ltd is dedicated to harnessing innovative technologies and collaborative approaches to monitor, protect, and conserve Uganda's natural resources. We empower local communities, inform policy decisions, and drive sustainable development through cutting-edge solutions and inclusive engagement.
+              </p>
+            </div>
+            
+            <div className="mb-6">
+              <h4 className="text-xl font-medium mb-3 text-forest-dark">Our Vision</h4>
+              <p className="text-gray-700">
+                Aquawood Group Uganda Ltd envisions a Global where technology, community engagement, and collaborative conservation efforts converge to preserve the country's rich biodiversity, ensure sustainable land use, and promote a healthy environment for future generations.
+              </p>
+            </div>
+            
+            <div className="mb-6">
+              <h4 className="text-xl font-medium mb-3 text-forest-dark">Our Objectives</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <li>To monitor and report deforestation and water pollution in Uganda's key ecosystems using satellite imagery and machine learning algorithms.</li>
+                <li>To engage local community members in environmental conservation efforts through training and awareness programs.</li>
+                <li>To collaborate with government agencies, local communities and conservation groups to promote sustainable land use practices and environmental conservation.</li>
+                <li>To develop and deliver ICT solutions and services that harness emerging technologies and innovations.</li>
+                <li>To conduct comprehensive assessments and evaluation of environmental conservation impact, driving research and innovations for sustainable development.</li>
+              </ul>
+            </div>
+            
+            <div className="text-center mt-6">
+              <p className="text-forest-dark font-medium italic">
+                "Where Technology Meets Environmental Preservation"
+              </p>
+            </div>
+            
+            <div className="mt-6 flex justify-center space-x-4">
+              <a 
+                href="https://www.linkedin.com/company/aquawood-uganda/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-forest-DEFAULT hover:text-forest-dark transition-colors"
+              >
+                <Linkedin size={18} className="mr-1" /> LinkedIn
+              </a>
+              <a 
+                href="https://youtube.com/@aquawoodug?si=PQKX4rl1DHy9r_B6" 
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="flex items-center text-forest-DEFAULT hover:text-forest-dark transition-colors"
+              >
+                <Youtube size={18} className="mr-1" /> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-forest-light/20 rounded-xl p-8 mb-16">
           <h3 className="text-2xl font-semibold mb-6 text-center text-forest-dark">Our Partners</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <PartnerLogo name="Ministry of Water and Environment" />
@@ -44,9 +98,9 @@ const Team = () => {
           </div>
         </div>
         
-        <div className="mt-16 py-10">
+        <div className="py-10">
           <h3 className="text-2xl font-semibold mb-6 text-center text-forest-dark">Our Achievements</h3>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="aspect-video relative overflow-hidden">
                 <img 
@@ -71,6 +125,19 @@ const Team = () => {
               <div className="p-5">
                 <h4 className="text-lg font-medium text-forest-dark">Investor Pitch</h4>
                 <p className="text-gray-600 text-sm">Aquawood investor pitch at National Water and Sewage Corporation during Water and Environment Week 2024</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="aspect-video relative overflow-hidden">
+                <img 
+                  src="/lovable-uploads/209cb8a5-a8b8-4361-9de1-0df19a63d48a.png" 
+                  alt="WASH Hackathon and Majipreneurs Summit achievement" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="text-lg font-medium text-forest-dark">WASH Hackathon</h4>
+                <p className="text-gray-600 text-sm">Achievement during WASH hackathon competitions and Majipreneurs Summit 2025</p>
               </div>
             </div>
           </div>
