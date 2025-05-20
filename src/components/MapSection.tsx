@@ -1,9 +1,81 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Map, FileWarning, TreePine, Droplets } from 'lucide-react';
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import type { MonitoredArea, DeforestationData, WaterQualityData, EnvironmentalAlert } from '@/types/custom';
 
 const MapSection = () => {
   const [activeTab, setActiveTab] = useState('deforestation');
+  const [monitoredAreas, setMonitoredAreas] = useState<MonitoredArea[]>([]);
+  const [deforestationData, setDeforestationData] = useState<DeforestationData[]>([]);
+  const [waterQualityData, setWaterQualityData] = useState<WaterQualityData[]>([]);
+  const [alerts, setAlerts] = useState<EnvironmentalAlert[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Fetch monitored areas
+        const { data: areasData, error: areasError } = await supabase
+          .from('monitored_areas')
+          .select('*');
+
+        if (areasError) throw areasError;
+        setMonitoredAreas(areasData || []);
+        
+        // Fetch data based on active tab
+        if (activeTab === 'deforestation') {
+          const { data, error } = await supabase
+            .from('deforestation_data')
+            .select('*')
+            .order('observation_date', { ascending: false })
+            .limit(10);
+          
+          if (error) throw error;
+          setDeforestationData(data || []);
+        } 
+        else if (activeTab === 'water') {
+          const { data, error } = await supabase
+            .from('water_quality_data')
+            .select('*')
+            .order('observation_date', { ascending: false })
+            .limit(10);
+          
+          if (error) throw error;
+          setWaterQualityData(data || []);
+        } 
+        else if (activeTab === 'alerts') {
+          const { data, error } = await supabase
+            .from('environmental_alerts')
+            .select('*')
+            .order('reported_date', { ascending: false })
+            .limit(10);
+          
+          if (error) throw error;
+          setAlerts(data || []);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        toast({
+          title: "Error fetching data",
+          description: "Could not load environmental data. Please try again later.",
+          variant: "destructive",
+        });
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [activeTab, toast]);
+
+  // Function to handle tab changes
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setLoading(true);
+  };
 
   return (
     <section id="map" className="section-padding bg-gradient-to-b from-white to-earth-light/30 relative">
@@ -21,19 +93,19 @@ const MapSection = () => {
           <div className="flex border-b">
             <TabButton 
               active={activeTab === 'deforestation'} 
-              onClick={() => setActiveTab('deforestation')}
+              onClick={() => handleTabChange('deforestation')}
               icon={<TreePine size={18} />}
               label="Deforestation Monitoring"
             />
             <TabButton 
               active={activeTab === 'water'} 
-              onClick={() => setActiveTab('water')}
+              onClick={() => handleTabChange('water')}
               icon={<Droplets size={18} />}
               label="Water Quality"
             />
             <TabButton 
               active={activeTab === 'alerts'} 
-              onClick={() => setActiveTab('alerts')}
+              onClick={() => handleTabChange('alerts')}
               icon={<FileWarning size={18} />}
               label="Alert System"
             />
@@ -42,29 +114,36 @@ const MapSection = () => {
           {/* Map Placeholder */}
           <div className="p-6">
             <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden relative">
-              {activeTab === 'deforestation' && (
+              {loading ? (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-DEFAULT"></div>
+                </div>
+              ) : activeTab === 'deforestation' && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
                   <Map size={48} className="mb-4 text-forest-DEFAULT opacity-50" />
                   <p className="text-center max-w-md">
-                    Interactive deforestation monitoring map will be displayed here, showing forest cover changes from 2020-2025 across Uganda.
+                    Interactive deforestation monitoring map displaying forest cover changes from 2020-2025 across Uganda.
+                    {deforestationData.length > 0 && ` Showing ${deforestationData.length} recent records.`}
                   </p>
                   <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-forest-DEFAULT/20 to-transparent"></div>
                 </div>
               )}
-              {activeTab === 'water' && (
+              {!loading && activeTab === 'water' && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
                   <Map size={48} className="mb-4 text-aqua-DEFAULT opacity-50" />
                   <p className="text-center max-w-md">
-                    Water quality monitoring visualization will be displayed here, tracking pollution levels in major water bodies.
+                    Water quality monitoring visualization tracking pollution levels in major water bodies.
+                    {waterQualityData.length > 0 && ` Showing ${waterQualityData.length} recent records.`}
                   </p>
                   <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-aqua-DEFAULT/20 to-transparent"></div>
                 </div>
               )}
-              {activeTab === 'alerts' && (
+              {!loading && activeTab === 'alerts' && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
                   <Map size={48} className="mb-4 text-earth-gray opacity-50" />
                   <p className="text-center max-w-md">
-                    Environmental alert system will be displayed here, highlighting areas of concern requiring immediate attention.
+                    Environmental alert system highlighting areas of concern requiring immediate attention.
+                    {alerts.length > 0 && ` Showing ${alerts.length} active alerts.`}
                   </p>
                   <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-earth-gray/20 to-transparent"></div>
                 </div>
