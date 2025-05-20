@@ -1,4 +1,3 @@
-
 import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
@@ -10,12 +9,14 @@ const Hero = () => {
       <div className="container-custom relative z-10 pt-24 pb-16 flex flex-col lg:flex-row items-center">
         {/* Logo and title */}
         <div className="w-full lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0 animate-fade-in">
-          <div className="mx-auto lg:mx-0 mb-8 w-48 h-48 rounded-full bg-white p-4 shadow-xl">
-            <img 
-              src="/lovable-uploads/ab4d50d3-c4c4-41ad-8d79-77c5a42e9833.png" 
-              alt="AQUAWOOD Logo" 
-              className="w-full h-full object-contain"
-            />
+          <div className="mx-auto lg:mx-0 mb-8 w-48 h-48 rounded-full bg-white p-4 shadow-xl flex items-center justify-center">
+            <div className="w-40 h-40 rounded-full overflow-hidden flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/ab4d50d3-c4c4-41ad-8d79-77c5a42e9833.png" 
+                alt="AQUAWOOD Logo" 
+                className="w-32 h-32 object-contain"
+              />
+            </div>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-forest-dark">
             AQUAWOOD <span className="text-aqua-DEFAULT">UGANDA</span>

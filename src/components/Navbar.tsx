@@ -14,8 +14,17 @@ const Navbar = () => {
     <nav className="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
       <div className="container-custom flex items-center justify-between py-4">
         <a href="#" className="flex items-center space-x-2">
-          <span className="text-xl font-display font-bold text-forest-dark">Aquawood Group</span>
-          <span className="text-sm font-medium text-aqua-DEFAULT">UGANDA LTD</span>
+          <div className="w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
+            <img 
+              src="/lovable-uploads/ab4d50d3-c4c4-41ad-8d79-77c5a42e9833.png" 
+              alt="AQUAWOOD Logo" 
+              className="w-8 h-8 object-contain"
+            />
+          </div>
+          <div>
+            <span className="text-xl font-display font-bold text-forest-dark">Aquawood Group</span>
+            <span className="text-sm font-medium text-aqua-DEFAULT block md:inline md:ml-1">UGANDA LTD</span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}

@@ -1,4 +1,3 @@
-
 import { ChevronUp } from 'lucide-react';
 
 const Footer = () => {
@@ -15,12 +14,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="w-12 h-12 rounded-full bg-white p-1 mr-3">
-                <img 
-                  src="/lovable-uploads/ab4d50d3-c4c4-41ad-8d79-77c5a42e9833.png" 
-                  alt="AQUAWOOD Logo" 
-                  className="w-full h-full object-contain"
-                />
+              <div className="w-12 h-12 rounded-full bg-white p-1 mr-3 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/ab4d50d3-c4c4-41ad-8d79-77c5a42e9833.png" 
+                    alt="AQUAWOOD Logo" 
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
               </div>
               <div>
                 <h3 className="font-display font-bold text-xl">Aquawood Group</h3>
